@@ -1,7 +1,7 @@
 import React from 'react';
 import {
+  Button,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   View,
@@ -17,7 +17,7 @@ import {
 
 import Section from 'components/section';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -26,10 +26,6 @@ const Home = () => {
 
   return (
     <View>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
@@ -38,7 +34,14 @@ const Home = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Step One">
+          <Section
+            title="Step One"
+            actionComponent={
+              <Button
+                title="Go to Test Screen"
+                onPress={() => navigation.navigate('Test')}
+              />
+            }>
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.
           </Section>

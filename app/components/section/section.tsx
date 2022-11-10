@@ -4,9 +4,10 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 type SectionProps = PropsWithChildren<{
   title: string;
+  actionComponent?: React.ReactNode;
 }>;
 
-const Section = ({children, title}: SectionProps) => {
+const Section = ({children, title, actionComponent}: SectionProps) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -28,6 +29,7 @@ const Section = ({children, title}: SectionProps) => {
         ]}>
         {children}
       </Text>
+      {actionComponent && actionComponent}
     </View>
   );
 };
