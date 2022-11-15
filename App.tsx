@@ -8,9 +8,7 @@ const linking = {
   config: {
     screens: {
       Home: 'home',
-      Test: {
-        path: 'test/:id?',
-      },
+      Test: 'test/:id?',
     },
   },
 };

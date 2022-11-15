@@ -7,7 +7,7 @@ import com.facebook.react.ReactRootView;
 
 public class MainActivity extends ReactActivity {
 
-  @Override
+  // @Override
   protected void onCreateBundle(Bundle savedInstanceState) {
     super.onCreate(null);
   }
