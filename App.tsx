@@ -8,7 +8,7 @@ const linking = {
   config: {
     screens: {
       Home: 'home',
-      Test: 'test/:id?',
+      CoffeeNote: 'coffee_note/:coffeeNoteId?',
     },
   },
 };

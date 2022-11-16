@@ -21,18 +21,16 @@ type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 const Home = ({navigation}: HomeProps) => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const fullScrenStyle = {
-    minHeight: '100%',
-  };
-  const backgroundStyle = {
+  const scrollViewStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.white,
+    minHeight: '100%',
   };
 
   return (
     <View>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        style={[backgroundStyle, fullScrenStyle]}>
+        style={scrollViewStyle}>
         <View style={styles.header}>
           <Text style={styles.headerIcon}>☕️</Text>
           <Text style={styles.headerText}>Coffee Notes</Text>
@@ -41,9 +39,10 @@ const Home = ({navigation}: HomeProps) => {
           </Text>
         </View>
         <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
+          style={[
+            styles.coffeeList,
+            {backgroundColor: isDarkMode ? Colors.black : Colors.white},
+          ]}>
           {Notes.map((note, index: number) => (
             <TouchableOpacity
               key={index}
@@ -90,8 +89,8 @@ const styles = StyleSheet.create({
     padding: 15,
     textAlign: 'center',
   },
-  highlight: {
-    fontWeight: '700',
+  coffeeList: {
+    paddingBottom: 20,
   },
 });
 
