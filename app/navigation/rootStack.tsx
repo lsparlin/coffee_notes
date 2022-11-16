@@ -2,15 +2,17 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Home from 'screens/home';
-import Test from 'screens/test';
+import CoffeeNote from 'screens/coffeeNote';
 
-const Stack = createNativeStackNavigator();
+import type {RootStackParamList} from './rootStack.types';
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Test" component={Test} />
+      <Stack.Screen name="CoffeeNote" component={CoffeeNote} />
     </Stack.Navigator>
   );
 };

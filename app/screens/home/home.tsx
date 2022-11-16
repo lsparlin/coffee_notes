@@ -1,60 +1,69 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import moment from 'moment';
 import React from 'react';
 import {
   Button,
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
   useColorScheme,
 } from 'react-native';
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import Section from 'components/section';
+import Notes from 'data/notes.json';
+import type {RootStackParamList} from 'navigation/rootStack.types';
 
-const Home = ({navigation}) => {
+type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
+
+const Home = ({navigation}: HomeProps) => {
   const isDarkMode = useColorScheme() === 'dark';
 
+  const fullScrenStyle = {
+    minHeight: '100%',
+  };
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: isDarkMode ? Colors.darker : Colors.white,
   };
 
   return (
     <View>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
+        style={[backgroundStyle, fullScrenStyle]}>
+        <View style={styles.header}>
+          <Text style={styles.headerIcon}>☕️</Text>
+          <Text style={styles.headerText}>Coffee Notes</Text>
+          <Text style={styles.headerSubtext}>
+            Your minimalist coffee journal
+          </Text>
+        </View>
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section
-            title="Step One"
-            actionComponent={
-              <Button
-                title="Go to Test Screen"
-                onPress={() => navigation.navigate('Test')}
+          {Notes.map((note, index: number) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() =>
+                navigation.navigate('CoffeeNote', {coffeeNoteId: note.id})
+              }>
+              <Section
+                title={moment(note.dateTime).format('dddd, MMM. D')}
+                subtitle={note.coffeeName}
+                actionComponent={
+                  <Button
+                    title="Read notes"
+                    onPress={() =>
+                      navigation.navigate('CoffeeNote', {coffeeNoteId: note.id})
+                    }
+                  />
+                }
               />
-            }>
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+            </TouchableOpacity>
+          ))}
         </View>
       </ScrollView>
     </View>
@@ -62,6 +71,25 @@ const Home = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  header: {
+    paddingVertical: '12%',
+  },
+  headerIcon: {
+    fontSize: 72,
+    textAlign: 'center',
+  },
+  headerText: {
+    fontSize: 48,
+    fontWeight: '600',
+    padding: 15,
+    textAlign: 'center',
+  },
+  headerSubtext: {
+    fontSize: 24,
+    fontWeight: '400',
+    padding: 15,
+    textAlign: 'center',
+  },
   highlight: {
     fontWeight: '700',
   },

@@ -12,6 +12,7 @@
     "baseUrl": "./app",
     "paths": {
       "components/*": ["components/*"],
+      "data/*": ["data/*"],
       "navigation/*": ["navigation/*"],
       "screens/*": ["screens/*"]
     }
