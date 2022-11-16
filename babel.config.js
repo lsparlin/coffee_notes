@@ -11,6 +11,7 @@ module.exports = {
           components: './app/components',
           data: './app/data',
           screens: './app/screens',
+          styles: './app/styles',
           navigation: './app/navigation',
         },
       },

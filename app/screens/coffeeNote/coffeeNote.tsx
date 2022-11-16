@@ -1,7 +1,9 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import moment from 'moment';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
+
+import {titleStyle, dateSubtitleStyle} from './coffeeNote.styles';
 
 import Notes from 'data/notes.json';
 import {RootStackParamList} from 'navigation/rootStack.types';
@@ -22,26 +24,12 @@ const CoffeeNote = ({route}: CoffeeNoteProps) => {
 
   return (
     <View>
-      <Text style={styles.title}>{coffeeNote.coffeeName}</Text>
-      <Text style={styles.dateSubtitle}>
+      <Text style={titleStyle}>{coffeeNote.coffeeName}</Text>
+      <Text style={dateSubtitleStyle}>
         ☕️ Notes from {moment(coffeeNote.dateTime).format('dddd, MMM. D YYYY')}
       </Text>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 24,
-    fontWeight: '600',
-    textAlign: 'center',
-    paddingVertical: 25,
-  },
-  dateSubtitle: {
-    fontSize: 20,
-    fontWeight: '400',
-    marginStart: 10,
-  },
-});
 
 export default CoffeeNote;
