@@ -4,7 +4,7 @@ import React from 'react';
 import RootStack from './app/navigation/rootStack';
 
 const linking = {
-  prefixes: ['coffeeNotes://'],
+  prefixes: ['coffeeNotes://', 'https://coffeenotesapp.lsparlin.dev/'],
   config: {
     screens: {
       Home: 'home',

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.coffee_notes">
+  package="dev.lsparlin.coffeeNotes">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -26,6 +26,13 @@
           <category android:name="android.intent.category.DEFAULT" />
           <category android:name="android.intent.category.BROWSABLE" />
           <data android:scheme="coffeeNotes" />
+        </intent-filter>
+        <intent-filter>
+          <action android:name="android.intent.action.VIEW" />
+          <category android:name="android.intent.category.DEFAULT" />
+          <category android:name="android.intent.category.BROWSABLE" />
+          <data android:scheme="https" />
+          <data android:host="coffeenotesapp.lsparlin.dev" />
         </intent-filter>
       </activity>
     </application>
