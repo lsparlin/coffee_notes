@@ -1,4 +1,7 @@
 # Coffee Notes App
+<p align="center">
+<img width="160" alt="Screenshot%202022-11-16%20at%201 48 22%20PM" src="https://user-images.githubusercontent.com/1904364/203422034-36db1192-aca9-49fb-a65a-5f215d12e9c0.png">
+</p>
 
 ## Install run dependencies
 This project uses [`asdf`](https://github.com/asdf-vm/asdf) to keep ruby, node, and yarn versions in sync across developer environments.
