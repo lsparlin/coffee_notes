@@ -22,6 +22,7 @@ bundle exec pod install
 ```
 
 ## Running the app on iOS simulator
+_Note: On M1 hardware this seems to work most reliably when run with [Rosetta](https://support.apple.com/en-us/HT211861)_
 ```bash
 yarn ios
 ```
